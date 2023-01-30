@@ -1,3 +1,5 @@
+# https://adventofcode.com/2015/day/3
+
 def fetch_data(path):
     with open(path, 'r') as f:
         return f.readline().rstrip()
