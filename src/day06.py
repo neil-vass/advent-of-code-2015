@@ -7,11 +7,14 @@ Instruction = namedtuple("Instruction", "action x1 y1 x2 y2")
 
 class Grid:
     def __init__(self):
-        self.lights = np.zeros((1000, 1000), dtype=bool)
+        self.lights = np.zeros((1000, 1000), dtype=int)
 
     def lit(self):
         return np.count_nonzero(self.lights)
     
+    def brightness(self):
+        return np.sum(self.lights)
+
     def run(self, instruction):
         match instruction.action:
             case 'turn on':
@@ -22,6 +25,15 @@ class Grid:
                 self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1] = np.logical_not(
                     self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1])
 
+    def run_v2(self, instruction):
+        match instruction.action:
+            case 'turn on':
+                self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1] += 1
+            case 'turn off':
+                self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1] = \
+                    np.maximum(0, self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1] -1)
+            case 'toggle':
+                self.lights[instruction.x1:instruction.x2+1, instruction.y1:instruction.y2+1] += 2
 
 def fetch_data(path):
     with open(path, 'r') as f:
@@ -53,12 +65,21 @@ def test_run_instructions():
     grid.run(next(instruction))
     assert grid.lit() == 998996
 
+def test_run_instructions():
+    instruction = fetch_data('sample_data/day06.txt')
+    grid = Grid()
+    assert grid.brightness() == 0
+    grid.run_v2(Instruction('turn on', 0,0, 0,0))
+    assert grid.brightness() == 1
+    grid.run_v2(Instruction('toggle', 0,0, 999,999))
+    assert grid.brightness() == 2000001
 
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
     grid = Grid()
     for instruction in fetch_data('data/day06.txt'):
-        grid.run(instruction)
+        grid.run_v2(instruction)
 
-    print(grid.lit())
+    print(grid.brightness())
+    # 14747699 is too low
