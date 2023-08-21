@@ -24,5 +24,5 @@ def test_find_floor():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day01.txt')
+    data = fetch_data('../data/day01.txt')
     print(pos_for_basement(data))

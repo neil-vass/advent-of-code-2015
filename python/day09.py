@@ -34,22 +34,22 @@ class RoutePlanner:
 #--------------------- tests -------------------------#
 
 def test_basics():
-    data = fetch_data('sample_data/day09.txt')
+    data = fetch_data('../sample_data/day09.txt')
     assert next(data) == ('London', 'Dublin', 464)
 
 def test_shortest():
-    data = fetch_data('sample_data/day09.txt')
+    data = fetch_data('../sample_data/day09.txt')
     planner = RoutePlanner(data)
     assert planner.choose_route(min) == 605
 
 def test_longest():
-    data = fetch_data('sample_data/day09.txt')
+    data = fetch_data('../sample_data/day09.txt')
     planner = RoutePlanner(data)
     assert planner.choose_route(max) == 982
 
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day09.txt')
+    data = fetch_data('../data/day09.txt')
     planner = RoutePlanner(data)
     print(planner.choose_route(max))

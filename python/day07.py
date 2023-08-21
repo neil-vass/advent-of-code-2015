@@ -51,7 +51,7 @@ def fetch_data(path):
 #--------------------- tests -------------------------#
 
 def test_circuit():
-    instructions = fetch_data('sample_data/day07.txt')
+    instructions = fetch_data('../sample_data/day07.txt')
     circuit = Circuit()
     circuit.load(instructions)
     assert circuit.evaluate('x') == 123
@@ -60,7 +60,7 @@ def test_circuit():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    instructions = fetch_data('data/day07.txt')
+    instructions = fetch_data('../data/day07.txt')
     circuit = Circuit()
     circuit.load(instructions)
     print(circuit.evaluate('a'))

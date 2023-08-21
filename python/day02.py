@@ -17,7 +17,7 @@ def ribbon(l, w, h):
 #--------------------- tests -------------------------#
 
 def test_fetch_data():
-    data = fetch_data('sample_data/day02.txt')
+    data = fetch_data('../sample_data/day02.txt')
     assert next(data) == [2, 3, 4]
 
 def test_wrap():
@@ -25,7 +25,7 @@ def test_wrap():
     assert wrap(1, 1, 10) == 43
 
 def test_total_wrapping():
-    data = fetch_data('sample_data/day02.txt')
+    data = fetch_data('../sample_data/day02.txt')
     assert sum(wrap(*present) for present in data) == (58 + 43)
 
 def test_ribbon():
@@ -35,5 +35,5 @@ def test_ribbon():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day02.txt')
+    data = fetch_data('../data/day02.txt')
     print(sum(ribbon(*present) for present in data))

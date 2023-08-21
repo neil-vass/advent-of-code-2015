@@ -53,5 +53,5 @@ def test_house_count_with_robo_santa():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day03.txt')
+    data = fetch_data('../data/day03.txt')
     print(house_count_with_robo_santa(data))

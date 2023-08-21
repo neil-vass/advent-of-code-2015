@@ -36,5 +36,5 @@ def test_sum_numbers_ignore_red():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day12.txt')
+    data = fetch_data('../data/day12.txt')
     print(sum_numbers_ignore_red(data))

@@ -34,5 +34,5 @@ def test_is_nice_v2():
 #-----------------------------------------------------#
 
 if __name__ == "__main__":
-    data = fetch_data('data/day05.txt')
+    data = fetch_data('../data/day05.txt')
     print(sum(is_nice_v2(s) for s in data))

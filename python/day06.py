@@ -45,11 +45,11 @@ def fetch_data(path):
 #--------------------- tests -------------------------#
 
 def test_fetch_data():
-    data = fetch_data('sample_data/day06.txt')
+    data = fetch_data('../sample_data/day06.txt')
     assert next(data) == Instruction('turn on', 0,0, 999,999)
 
 def test_run_instructions():
-    instruction = fetch_data('sample_data/day06.txt')
+    instruction = fetch_data('../sample_data/day06.txt')
     grid = Grid()
     assert grid.lit() == 0
 
@@ -66,7 +66,7 @@ def test_run_instructions():
     assert grid.lit() == 998996
 
 def test_run_instructions():
-    instruction = fetch_data('sample_data/day06.txt')
+    instruction = fetch_data('../sample_data/day06.txt')
     grid = Grid()
     assert grid.brightness() == 0
     grid.run_v2(Instruction('turn on', 0,0, 0,0))
@@ -78,7 +78,7 @@ def test_run_instructions():
 
 if __name__ == "__main__":
     grid = Grid()
-    for instruction in fetch_data('data/day06.txt'):
+    for instruction in fetch_data('../data/day06.txt'):
         grid.run_v2(instruction)
 
     print(grid.brightness())
